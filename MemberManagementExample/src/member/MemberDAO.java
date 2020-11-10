@@ -45,5 +45,28 @@ public class MemberDAO {
 		}
 	}
 	
+	public int login(String id, String pass1) {
+		
+		try {
+		getCon();
+		
+		String sql = "SELECT pass1 FROM member WHERE id=?";
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, id);
+		rs = pstmt.executeQuery();
+		
+		if(rs.next()) {
+			if(rs.getString(1).equals(pass1))
+				return 1; //로그인성공
+			else
+				return 0; //비밀번호 틀림
+		}
+		return -1; //존재하지 않는 아이디
+		}catch(Exception e) {
+			
+		}
+		return -2;	//db연동실패ㅋ
+	}
+	
 }
 

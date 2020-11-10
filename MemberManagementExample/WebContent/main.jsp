@@ -1,3 +1,4 @@
+<%@ page import="java.io.PrintWriter" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,8 +9,17 @@
 </head>
 <body>
 
-<h1>지금은 암꺼또 없지만 이건 메인페이지다~</h1>
-<h2>당신은 성공적인 로그인을 해버렸군요?</h2>
 
+
+<%
+ 	String id = null;
+	
+	if(id == null) {
+		id= "GUEST";
+	}
+%>
+
+<h1>This is Main Page</h1>
+<h2>Welcome, <%=id %></h2>
 </body>
 </html>
