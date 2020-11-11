@@ -61,6 +61,13 @@
 		script.println("alert('JOIN SUCCESS!!')");
 		script.println("location.href='main.jsp'");
 		script.println("</script");
+		
+		session.setAttribute("id", mbean.getId());
+		session.setAttribute("pass1", mbean.getPass1());
+		
+		session.setMaxInactiveInterval(60);
+		
+		response.sendRedirect("main.jsp");
 	}
 	
 	
