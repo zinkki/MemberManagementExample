@@ -1,3 +1,6 @@
+<%@page import="java.util.Vector"%>
+<%@ page import="member.MemberDAO" %>
+<%@ page import="member.MemberBean" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,10 +10,37 @@
 <title>MemberList</title>
 </head>
 <body>
-	<h2 align="center">Member List</h2>
-	<h3>일단 내일 다시 오도록하지</h3>
-	<h4>오늘은 레파지토리를 새로 만들었기때문에 잔디가 심겼지</h4>
-	<h5>내일은 안만들껀데 내일도 안생기면 깃허브랑 손절할거야</h5>
-	<h6>좋은말로할때 내 잔디 내놓는것이 좋을거야...     </h6>
+
+
+<%
+	MemberDAO mdao = new MemberDAO();
+	Vector<MemberBean> vec = mdao.memberList();
+%>
+
+	<h1 align="center">Member List</h1>
+	<table align="center" width="400" border="1">
+	<tr height="40">
+		<td width="50" align="center">NUM</td>
+		<td width="200" align="center">Member ID</td>
+		<td width="200" align="center">E-MAIL</td>
+	</tr>
+
+<%
+	
+for(int i=0; i<vec.size(); i++) {
+	MemberBean mbean = vec.get(i);
+%>	
+	
+	<tr height="40">
+		<td width="50" align="center"><%=i+1 %></td>
+		<td width="200" align="center"><a href="memberInfo.jsp"><%=mbean.getId() %></a></td>
+		<td width="200" align="center"><%=mbean.getEmail() %></td>
+	</tr>
+
+<%
+	}
+%>	
+	
+	</table>	
 </body>
 </html>

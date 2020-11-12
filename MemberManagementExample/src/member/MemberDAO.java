@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Vector;
 
 public class MemberDAO {
 
@@ -67,6 +68,33 @@ public class MemberDAO {
 		}
 		return -2;	//db연동실패ㅋ
 	}
+	
+	//멤버리스트 리턴해주는 메소드작성
+	public Vector <MemberBean> memberList() {
+		
+		Vector<MemberBean> v = new Vector<>();
+		
+		getCon();
+		
+		try {
+			String sql = "SELECT * FROM member";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MemberBean mbean = new MemberBean();
+				mbean.setId(rs.getString(1));
+				mbean.setEmail(rs.getString(3));
+				v.add(mbean);
+			}
+			con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return v;
+	}
+	
+	
 	
 }
 
