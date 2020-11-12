@@ -69,7 +69,7 @@ public class MemberDAO {
 		return -2;	//db연동실패ㅋ
 	}
 	
-	//멤버리스트 리턴해주는 메소드작성
+	//회원리스트 뽑아옴ㅋ
 	public Vector <MemberBean> memberList() {
 		
 		Vector<MemberBean> v = new Vector<>();
@@ -92,6 +92,33 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 		return v;
+	}
+	
+	//개인회원정보보기!
+	public MemberBean memberInfo(String id) {
+		MemberBean bean = new MemberBean();
+		
+		getCon();
+		
+		try {
+			String sql = "SELECT * FROM board WHERE id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				bean.setId(rs.getString(1));
+				bean.setPass1(rs.getString(2));
+				bean.setEmail(rs.getString(3));
+				bean.setTel(rs.getString(4));
+				bean.setJob(rs.getString(5));
+				bean.setHobby(rs.getString(6));
+				bean.setInfo(rs.getString(7));
+			}con.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bean;
 	}
 	
 	

@@ -40,7 +40,14 @@ for(int i=0; i<vec.size(); i++) {
 <%
 	}
 %>	
-	
+	<tr height="40">
+		<td align="center" colspan="3">
+	<input type="button" align="center" value="go to main" onclick="location.href='main.jsp'">
+		</td>
 	</table>	
+	<br>
+	
+	
+	
 </body>
 </html>
