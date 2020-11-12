@@ -36,7 +36,7 @@
 		WELCOME, YOU ARE <%=id %> . <br><br><a href="loginPage.jsp">go to login</a> &nbsp;&nbsp; <a href="joinPage.jsp">go to join</a>
 <%} else if(id.equals("admin")){ %>
 
-		WELCOME, YOU ARE <%=id %> . <br><br><a href="memberListAction.jsp">go to MemberList</a><br><br><a href="logoutAction.jsp">logout</a>
+		WELCOME, YOU ARE <%=id %> . <br><br><a href="memberListAction.jsp">go to MemberList</a>
 		
 <%}else { %>
 		
