@@ -94,31 +94,33 @@ public class MemberDAO {
 		return v;
 	}
 	
-	//개인회원정보보기!
-	public MemberBean memberInfo(String id) {
-		MemberBean bean = new MemberBean();
+	//선택한 회원정보 다 볼수있음!
+	public Vector<MemberBean> memberInfo(String id) {
 		
+		Vector<MemberBean> v = new Vector<>();
 		getCon();
 		
 		try {
-			String sql = "SELECT * FROM board WHERE id=?";
+			String sql = "SELECT*FROM member WHERE id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
-				bean.setId(rs.getString(1));
-				bean.setPass1(rs.getString(2));
-				bean.setEmail(rs.getString(3));
-				bean.setTel(rs.getString(4));
-				bean.setJob(rs.getString(5));
-				bean.setHobby(rs.getString(6));
-				bean.setInfo(rs.getString(7));
-			}con.close();
+			while(rs.next()) {
+				MemberBean mbean = new MemberBean();
+				mbean.setId(rs.getString(1));
+				mbean.setEmail(rs.getString(3));
+				mbean.setTel(rs.getString(4));
+				mbean.setJob(rs.getString(5));
+				mbean.setHobby(rs.getString(6));
+				mbean.setInfo(rs.getString(7));
+				v.add(mbean);
+			}
+				con.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return bean;
+		return v;
 	}
 	
 	

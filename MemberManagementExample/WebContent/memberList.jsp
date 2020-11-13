@@ -33,7 +33,7 @@ for(int i=0; i<vec.size(); i++) {
 	
 	<tr height="40">
 		<td width="50" align="center"><%=i+1 %></td>
-		<td width="200" align="center"><a href="memberInfo.jsp"><%=mbean.getId() %></a></td>
+		<td width="200" align="center"><a href="memberInfo.jsp?id=<%=mbean.getId()%>"><%=mbean.getId() %></a></td>
 		<td width="200" align="center"><%=mbean.getEmail() %></td>
 	</tr>
 
