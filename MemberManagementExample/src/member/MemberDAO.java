@@ -123,6 +123,22 @@ public class MemberDAO {
 		return v;
 	}
 	
+	public void deleteMember(String id) {
+		
+		getCon();
+		
+		try {
+			String sql = "DELETE FROM member WHERE id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			con.close();
+		}	
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	
 }

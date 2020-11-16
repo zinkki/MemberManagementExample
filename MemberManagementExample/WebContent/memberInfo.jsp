@@ -50,9 +50,8 @@
 	</tr>
 	<tr height="40">
 		<td align="center" colspan="2">
-		<input type="button" value="DELETE" onclick="#"> &nbsp;&nbsp;
-		<input type="button" value="MODIFY" onclick="#"> &nbsp;&nbsp;
-		<input type="button" value="LIST" onclick="location.href='memberList.jsp'"></td>
+		<input type="button" value="DELETE" onclick="location.href='memberDeleteAction.jsp?id=<%=bean.getId()%>'"> &nbsp;&nbsp;
+		<input type="button" value="LIST" onclick="location.href='memberList.jsp?id=<%=bean.getId()%>'"></td>
 	</tr>
 	
 <%
