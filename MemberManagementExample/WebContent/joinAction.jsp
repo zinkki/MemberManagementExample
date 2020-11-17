@@ -29,19 +29,27 @@
 	}
 
 	MemberDAO mdao = new MemberDAO();
-	MemberBean mb = new MemberBean();
 	
 	if(mbean.getId()==null || mbean.getPass1()==null || mbean.getPass2()==null || mbean.getEmail()==null ||
 		mbean.getTel()==null || mbean.getHobby()==null || mbean.getJob()==null || mbean.getInfo()==null){
+		//입력안된사항이있을때
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('There is an empty spot!')");
 		script.println("history.go(-1)");
 		script.println("</script>");
 	}else if(!mbean.getPass1().equals(mbean.getPass2())){
+		//비밀번호,비밀번호 확인 결과 불일치
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('PASSWORD IS NOT CORRECTED!!')");
+		script.println("history.go(-1)");
+		script.println("</script>");
+	}else if(mdao.idCheck(mbean.getId())==true){
+		//아이디 중복체크
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('The ID already exists.')");
 		script.println("history.go(-1)");
 		script.println("</script>");
 	}else {

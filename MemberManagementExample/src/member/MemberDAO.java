@@ -139,6 +139,25 @@ public class MemberDAO {
 		}
 	}
 	
+	public boolean idCheck(String id) {
+		
+		getCon();
+		
+		try {
+			String sql = "SELECT id FROM member";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				if(rs.getString("id").equals(id)) {
+					return true;
+				}
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+					return false;
+	}
+	
 	
 	
 }

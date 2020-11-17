@@ -1,7 +1,6 @@
-<%@ page import="member.MemberDAO" %>
+<%@page import="java.util.Vector"%>
 <%@ page import="member.MemberBean" %>
-<%@ page import="java.io.PrintWriter" %>
-
+<%@ page import="member.MemberDAO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,16 +10,16 @@
 <title>Insert title here</title>
 </head>
 <body>
- 
-<jsp:useBean id="mbean" class="member.MemberBean">
+	
+	<jsp:useBean id="mbean" class="member.MemberBean">
 	 <jsp:setProperty name="mbean" property="*"/>
 	</jsp:useBean>
 	
- 	<%	String id = request.getParameter("id");
+	<%
 		MemberDAO mdao = new MemberDAO();
-		mdao.deleteMember(id);
+		mdao.memberList();
 		response.sendRedirect("memberList.jsp");
-	%> 
+	%>
 	
 
 </body>
